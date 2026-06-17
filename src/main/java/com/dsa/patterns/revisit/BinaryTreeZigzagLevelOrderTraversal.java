@@ -27,21 +27,25 @@ public class BinaryTreeZigzagLevelOrderTraversal {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
 
-        int count = 0;
+        boolean isLeftToRight = false;
 
         while (!queue.isEmpty()) {
             int levelOrder = queue.size();
-            List<Integer> level = new ArrayList<>();
+            Deque<Integer> deque = new ArrayDeque<>();
             for (int i = 0; i < levelOrder; i++) {
                 TreeNode node = queue.poll();
 
-                level.add(node.val);
+                if (isLeftToRight) {
+                    deque.add(node.val);
+                } else {
+                    deque.addFirst(node.val);
+                }
 
                 if (node.left != null) queue.offer(node.left);
                 if (node.right != null) queue.offer(node.right);
             }
-            if (count++ % 2 == 0) Collections.reverse(level);
-            result.add(level);
+            result.add(new ArrayList<>(deque));
+            isLeftToRight = !isLeftToRight;
         }
         return result;
     }
