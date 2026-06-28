@@ -1,6 +1,7 @@
 package com.dsa.patterns.revisit.backtracking;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CombinationSum {
@@ -13,6 +14,7 @@ public class CombinationSum {
     }
 
     private List<List<Integer>> combinations(int[] candidates, int target) {
+        Arrays.sort(candidates);
         List<List<Integer>> results = new ArrayList<>();
         backtrack(candidates, target, new ArrayList<>(), results, 0);
         return results;
@@ -27,6 +29,7 @@ public class CombinationSum {
         }
 
         for (int i = start; i < candidates.length; i++) {
+            if (candidates[i] > remaining) break;
             path.add(candidates[i]);
             backtrack(candidates, remaining - candidates[i], path, results, i);
             path.removeLast();
