@@ -63,7 +63,7 @@ public class NetworkRecoveryPathways {
 
     private boolean check(List<List<int[]>> graph, int mid, long k, int n) {
         long[] dist = new long[n];
-        Arrays.fill(dist, Integer.MAX_VALUE);
+        Arrays.fill(dist, Long.MAX_VALUE);
 
         PriorityQueue<long[]> pq = new PriorityQueue<>(Comparator.comparingLong(a -> a[0]));
 
