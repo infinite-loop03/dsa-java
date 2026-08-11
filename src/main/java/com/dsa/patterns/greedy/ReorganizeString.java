@@ -10,44 +10,36 @@ public class ReorganizeString {
     }
 
     public String reorganizeString(String s) {
-
-        int[][] freqMap = new int[26][2];
-
-        for (int i = 0; i < 26; i++) {
-            freqMap[i][0] = 'a' + i;
-        }
+        int n = s.length();
+        int[] count = new int[26];
+        int maxCount = 0, maxLetter = 0;
 
         for (char c : s.toCharArray()) {
-            freqMap[c - 'a'][1]++;
+            if (++count[c - 'a'] > maxCount) {
+                maxCount = count[c - 'a'];
+                maxLetter = c - 'a';
+            }
         }
 
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> b[1] - a[1]);
+        if (maxCount > (n + 1) / 2) return "";
 
-        for (int[] freq : freqMap) {
-            if (freq[1] > 0) pq.offer(freq);
+        char[] res = new char[n];
+        int idx = 0;
+
+        while (count[maxLetter]-- > 0) {
+            res[idx] = (char) ('a' + maxLetter);
+            idx += 2;
         }
 
-        StringBuilder sb = new StringBuilder();
-        int[] curr = null;
-        if (!pq.isEmpty()) {
-            curr = pq.poll();
-            sb.append((char) curr[0]);
-            curr[1]--;
+        for (int i = 0; i < 26; i++) {
+            while (count[i]-- > 0) {
+                if (idx >= n) idx = 1;
+                res[idx] = (char) ('a' + i);
+                idx += 2;
+            }
         }
 
-        while (!pq.isEmpty()) {
-            int[] prev = curr;
-            curr = pq.poll();
-
-            sb.append((char) curr[0]);
-            curr[1]--;
-
-            if (prev[1] > 0) pq.offer(prev);
-        }
-
-        if (curr[1] > 0) return "";
-
-        return sb.toString();
+        return new String(res);
     }
 
 }
