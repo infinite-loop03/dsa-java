@@ -6,7 +6,6 @@ public class LongestSubsequenceWithNonZeroBitwiseXOR {
         LongestSubsequenceWithNonZeroBitwiseXOR longestSubsequenceWithNonZeroBitwiseXOR = new LongestSubsequenceWithNonZeroBitwiseXOR();
         int[] nums = {1, 2, 3};
         System.out.println(longestSubsequenceWithNonZeroBitwiseXOR.longestSubsequence(nums));
-        System.out.println(2 ^ 3);
     }
 
     public int longestSubsequence(int[] nums) {
