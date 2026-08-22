@@ -1,4 +1,4 @@
-package com.dsa.patterns.dynamicprogramming;
+package com.dsa.patterns.dailyquestion;
 
 public class CheckDivisibilityByDigitSumAndProduct {
 
