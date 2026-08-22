@@ -1,12 +1,12 @@
 package com.dsa.patterns.dynamicprogramming;
 
-public class LongestPalindrominSubstring {
+public class LongestPalindromicSubstring {
 
     public static void main(String[] args) {
-        LongestPalindrominSubstring longestPalindrominSubstring = new LongestPalindrominSubstring();
+        LongestPalindromicSubstring longestPalindromicSubstring = new LongestPalindromicSubstring();
         String s = "babad";
-        System.out.println(longestPalindrominSubstring.longestPalindromeUsingDP(s));
-        System.out.println(longestPalindrominSubstring.longestPalindrome(s));
+        System.out.println(longestPalindromicSubstring.longestPalindromeUsingDP(s));
+        System.out.println(longestPalindromicSubstring.longestPalindrome(s));
     }
 
     public String longestPalindrome(String s) {
