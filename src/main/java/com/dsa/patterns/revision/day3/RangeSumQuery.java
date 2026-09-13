@@ -1,11 +1,11 @@
-package com.dsa.patterns.revision.arrays;
+package com.dsa.patterns.revision.day3;
 
 public class RangeSumQuery {
 
     public static void main(String[] args) {
         int[] nums = {-2, 0, 3, -5, 2, -1};
         NumArray numArray = new NumArray(nums);
-        System.out.println(numArray.sumRange(2, 5));
+        System.out.println(numArray.sumRange(0, 2));
     }
 
     static class NumArray {
@@ -13,11 +13,11 @@ public class RangeSumQuery {
         private final int[] sumRange;
 
         public NumArray(int[] nums) {
-            if (nums == null || nums.length == 0) throw new IllegalArgumentException("Nums should have at least 1 element");
+            if (nums == null || nums.length == 0) throw new IllegalArgumentException("Nums cannot be null or empty");
             sumRange = new int[nums.length];
             sumRange[0] = nums[0];
             for (int i = 1; i < nums.length; i++) {
-               sumRange[i] = sumRange[i - 1] + nums[i];
+                sumRange[i] = sumRange[i - 1] + nums[i];
             }
         }
 
